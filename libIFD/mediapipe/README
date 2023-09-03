@@ -1,0 +1,14 @@
+After cloning MediaPipe from git, create a subfolder (e.g. 'IFD') inside the root directory and
+copy or symlink the files BUILD, mediapipebackendimpl.cpp and mediapipebackendimpl.h along with
+the library header ifd.h to that folder.
+
+To build with GPU support (only works on Linux) run
+bazel build --compilation_mode opt --define MEDIAPIPE_DISABLE_OPENCV=1 mediapipe
+
+Otherwise run
+bazel build --compilation_mode opt --define MEDIAPIPE_DISABLE_GPU=1 mediapipe
+
+After the compilation is complete, the library should be located in bazel-bin/IFD.
+
+The directory 'mediapipe' containing the model file face_detection_full_range_sparse.tflite
+must be copied to the working directory of the application.
